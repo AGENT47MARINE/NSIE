@@ -1,0 +1,44 @@
+{
+  "rulepack_id": "gsl-starter-v1",
+  "version": "2026.04",
+  "rules": [
+    {
+      "rule_id": "SOLAS_EGRESS_001",
+      "title": "Minimum evacuation corridor width",
+      "domain": "SOLAS",
+      "severity": "hard",
+      "scope": "deck_route",
+      "params": {
+        "min_width_m": 1.2
+      },
+      "check": "corridor_width >= min_width_m",
+      "fail_action": "reject_candidate"
+    },
+    {
+      "rule_id": "MARPOL_TANK_001",
+      "title": "Minimum fuel tank spacing",
+      "domain": "MARPOL",
+      "severity": "hard",
+      "scope": "tank_spacing",
+      "params": {
+        "min_spacing_m": 0.76
+      },
+      "check": "fuel_tank_spacing >= min_spacing_m",
+      "fail_action": "reject_candidate"
+    },
+    {
+      "rule_id": "CLASS_GM_001",
+      "title": "GM safe range",
+      "domain": "CLASS",
+      "severity": "hard",
+      "scope": "stability",
+      "params": {
+        "gm_min_m": 0.8,
+        "gm_max_m": 3.5
+      },
+      "check": "gm_min <= gm <= gm_max",
+      "fail_action": "reject_candidate"
+    }
+  ]
+}
+
